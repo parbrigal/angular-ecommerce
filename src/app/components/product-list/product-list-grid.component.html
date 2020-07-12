@@ -1,0 +1,30 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+
+        <h4>{{ currentCategoryName }}</h4>
+        <hr>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- loop over the collection of products -->
+
+                <div *ngFor="let temp of products" class="col-md-3">
+                    <div class="product-box">
+                        <a routerLink="/products/{{ temp.id }}">
+                            <img src="{{ temp.imageUrl }}" alt="" class="image-responsive">
+                        </a>
+                        <h1>{{ temp.name }}</h1>
+                        <div class="price">{{temp.unitPrice | currency:'USD'}}</div>
+                        <a routerLink="/products/{{ temp.id }}" class="btn btn-info mr-2">View Product</a>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+
+                <!-- display message if no products found -->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No Products Found!
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
